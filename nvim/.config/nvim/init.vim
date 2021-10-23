@@ -1,6 +1,6 @@
 syntax on
 set ruler
-set noerrorbells 
+set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -22,8 +22,13 @@ highlight LineNr ctermfg=11
 
 "----KEYMAP Vim----
 let mapleader = " "
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <leader>h :tabprevious<CR>
+nnoremap <leader>l :tabnext<CR>
 map <f9> :w <CR> :make!<CR>
 
 "----Spell checking--
@@ -32,7 +37,7 @@ autocmd FileType markdown setlocal spell
 
 
 
-"VUNDLE PLUGIN
+"using vim-Plug
 set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.config/nvim/plugged')
@@ -69,6 +74,11 @@ let g:vimwiki_markdown_link_ext = 1
 
 "----Nerdtree----
 nnoremap <leader>n :NERDTree<CR>
+let NERDTreeShowHidden=1
+
+autocmd VimEnter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 "----Autoformat--
 nnoremap <leader>a :Autoformat<CR>
 
@@ -78,14 +88,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "----COC----
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 let g:coc_snippet_next = '<tab>'
