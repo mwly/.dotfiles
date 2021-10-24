@@ -52,6 +52,8 @@ Plug 'honza/vim-snippets'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mbbill/undotree'
+Plug 'untitled-ai/jupyter_ascending.vim'
+
 
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -84,6 +86,11 @@ nnoremap <leader>a :Autoformat<CR>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"----Jupyter-ascending--
+
+nmap <leader>x <Plug>JupyterExecute
+nmap <leader>X <Plug>JupyterExecuteAll
 
 
 "----COC----
