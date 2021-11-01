@@ -53,6 +53,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mbbill/undotree'
 Plug 'untitled-ai/jupyter_ascending.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
 call plug#end()            " required
@@ -123,6 +124,40 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+"----Coc-Plugin-shortcuts
+"Python
+
+nmap <leader>pr :CocCommand python.execInTerminal<CR>
+
+"----vim-go
+"run in horizontal split
+nmap <leader>gr <Plug>(go-run-split)
+"show godocs in vertival split
+nmap <leader>gd <Plug>(go-doc-vertical)
+"show source definition in vertical split
+"enabled 'g:go_def_reuse_buffer' to overwrite when you issue a recursive call
+let g:go_def_reuse_buffer = 1 
+nmap <leader>gs <Plug>(go-def-vertical)
+"show definition of type in vertical split
+nmap <leader>gt <Plug>(go-def-type-vertical)
+
+"show interfaces implemented by the hovered type
+nmap <leader>gi <Plug>(go-implements)
+"enable some extra highlighting
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_variable_declarations = 1
+
+
+
+
+
+
 
 
 
