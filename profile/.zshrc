@@ -10,7 +10,9 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
 fi
 
 
+export PATH=~/go/bin:$PATH
 export PATH=~/.config/scripts:$PATH
+
 
 
 
