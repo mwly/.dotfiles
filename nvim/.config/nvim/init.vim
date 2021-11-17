@@ -42,7 +42,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.config/nvim/plugged')
 Plug 'preservim/nerdtree'
-Plug 'chrisbra/Colorizer'
 Plug 'Chiel92/vim-autoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -56,8 +55,19 @@ Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
+"colorschemes
+Plug 'wadackel/vim-dogrun'
+Plug 'morhetz/gruvbox'
+
 call plug#end()            " required
 filetype plugin indent on    " required
+
+
+"----enable colorscheme
+"colorscheme dogrun
+colorscheme gruvbox
+command GetJinxed colorscheme dogrun
+command CalmDown colorscheme gruvbox
 
 "----UndoTree-----
 nnoremap <F5> :UndotreeToggle<CR>
@@ -67,8 +77,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-"----Colorizer----
-autocmd VimEnter * ColorHighlight
 
 "----vimwiki----
 let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.wiki'}]
