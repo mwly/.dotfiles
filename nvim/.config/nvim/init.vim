@@ -7,6 +7,10 @@ set expandtab
 set smartindent
 set nu
 set wrap
+"---set wrap exclusions
+autocmd FileType markdown set nowrap
+autocmd FileType gprof set nowrap
+
 set smartcase
 set incsearch
 set backspace=indent,eol,start
@@ -34,7 +38,7 @@ map <f9> :w <CR> :make!<CR>
 "----Spell checking--
 setlocal spelllang=de
 autocmd FileType markdown setlocal spell
-autocmd FileType markdown set nowrap
+
 
 
 "using vim-Plug
