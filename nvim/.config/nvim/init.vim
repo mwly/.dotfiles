@@ -6,7 +6,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-set nowrap
+set wrap
 set smartcase
 set incsearch
 set backspace=indent,eol,start
@@ -34,7 +34,7 @@ map <f9> :w <CR> :make!<CR>
 "----Spell checking--
 setlocal spelllang=de
 autocmd FileType markdown setlocal spell
-
+autocmd FileType markdown set nowrap
 
 
 "using vim-Plug
@@ -79,8 +79,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "----vimwiki----
-let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.wiki'}]
-let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_markdown_link_ext = 1
 
 "----Nerdtree----
