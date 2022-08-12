@@ -49,13 +49,13 @@ Plug 'preservim/nerdtree'
 Plug 'Chiel92/vim-autoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'https://github.com/sirtaj/vim-openscad'
+" Plug 'https://github.com/sirtaj/vim-openscad'
 Plug 'lervag/vimtex'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mbbill/undotree'
-Plug 'untitled-ai/jupyter_ascending.vim'
+" Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 
@@ -100,25 +100,42 @@ nnoremap <leader>a :Autoformat<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"----Jupyter-ascending--
-
-nmap <leader>x <Plug>JupyterExecute
-nmap <leader>X <Plug>JupyterExecuteAll
-
 
 "----COC----
 inoremap <silent><expr> <TAB>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+
+
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+
+" let g:coc_snippet_next = '<tab>'
+ 
+
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
+
 
 " Codeaction
 nmap <leader>c  <Plug>(coc-codeaction)
@@ -149,7 +166,7 @@ nmap <leader>gr <Plug>(go-run-split)
 nmap <leader>gd <Plug>(go-doc-vertical)
 "show source definition in vertical split
 "enabled 'g:go_def_reuse_buffer' to overwrite when you issue a recursive call
-let g:go_def_reuse_buffer = 1 
+let g:go_def_reuse_buffer = 1
 nmap <leader>gs <Plug>(go-def-vertical)
 "show definition of type in vertical split
 nmap <leader>gt <Plug>(go-def-type-vertical)
