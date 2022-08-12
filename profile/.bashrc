@@ -140,3 +140,4 @@ ex ()
 export PATH=~/go/bin:$PATH
 export PATH=~/.config/scripts:$PATH
 
+. "$HOME/.cargo/env"
