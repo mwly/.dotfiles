@@ -86,10 +86,10 @@ command CalmDown colorscheme gruvbox
 nnoremap <F5> :UndotreeToggle<CR>
 "----Telescope----
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fb <cmd>Telescope find_files cwd=~ prompt_prefix=🔍<cr>
+nnoremap <leader>ff <cmd>Telescope live_grep prompt_prefix=🔍<cr>
+nnoremap <leader>fg <cmd>Telescope git_files prompt_prefix=🔍<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags prompt_prefix=🔍<cr>
 
 "----vimwiki----
 let g:vimwiki_list = [{'path': '~/vimwiki/','syntax': 'markdown', 'ext': '.md'}]
