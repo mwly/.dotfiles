@@ -31,9 +31,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+
+
 nnoremap <leader>h :tabprevious<CR>
 nnoremap <leader>l :tabnext<CR>
 map <f9> :w <CR> :make!<CR>
+
+"open Terminal
+nmap <leader>tr :vsplit<CR><C-l>:terminal<CR>
+nmap <leader>tu :belowright split<CR><C-j>:terminal<CR>
+"exit Terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 "----Spell checking--
 setlocal spelllang=de
@@ -58,6 +66,7 @@ Plug 'mbbill/undotree'
 " Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'ggandor/leap.nvim'
 
 "colorschemes
 Plug 'wadackel/vim-dogrun'
@@ -118,6 +127,9 @@ function! CheckBackspace() abort
 endfunction
 
 
+
+" activate ltex
+let g:coc_filetype_map = {'tex': 'latex'}
 
 
 " Use <c-space> to trigger completion.
@@ -183,11 +195,25 @@ let g:go_highlight_fields = 1
 let g:go_highlight_variable_declarations = 1
 
 
+"--Rust
+nmap <leader>rr :CocCommand rust-analyzer.run<CR>
+
+"--- vimtex
+"
+"filetype plugin indent on    "already enabled
+"
+syntax enable
+" viewer method:
+let g:vimtex_view_method = 'zathura'
 
 
 
 
 
 
-
+"---- leap require default settings---
+"s leap forward
+"S leap backwards
+"gs leap across windows
+lua require('leap').add_default_mappings()
 
