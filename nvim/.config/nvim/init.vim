@@ -42,6 +42,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"window REsize at  bottom of file
+
 
 nnoremap <leader>h :tabprevious<CR>
 nnoremap <leader>l :tabnext<CR>
@@ -258,4 +260,8 @@ nmap <leader>pr :CocCommand python.execInTerminal<CR>
 nmap <leader>rr :CocCommand rust-analyzer.run<CR>
 
 
-
+"window resizers
+nnoremap <C-up> <C-w>+
+nnoremap <C-down> <C-w>-
+nnoremap <C-left> <C-w>>
+nnoremap <C-right> <C-w><
