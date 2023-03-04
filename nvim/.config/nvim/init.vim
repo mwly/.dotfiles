@@ -8,7 +8,7 @@ set smartindent
 set nu
 set wrap
 "---set wrap exclusions
-autocmd FileType markdown set nowrap
+" autocmd FileType markdown set nowrap
 autocmd FileType gprof set nowrap
 
 set smartcase
@@ -18,6 +18,7 @@ set updatetime=300
 set cmdheight=2
 set noswapfile
 set nobackup
+set scrolloff=8
 set undodir=~/.vim/undodir
 set undofile
 set signcolumn=yes
@@ -26,11 +27,11 @@ highlight LineNr ctermfg=11
 
 "----KEYMAP Vim----
 let mapleader = " "
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
 
 
 nnoremap <leader>h :tabprevious<CR>
@@ -58,6 +59,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'https://github.com/sirtaj/vim-openscad'
+
 Plug 'lervag/vimtex'
 " Plug 'honza/vim-snippets'
 Plug 'nvim-telescope/telescope.nvim'
@@ -84,9 +86,10 @@ command CalmDown colorscheme gruvbox
 
 "----UndoTree-----
 nnoremap <F5> :UndotreeToggle<CR>
+
 "----Telescope----
 " Find files using Telescope command-line sugar.
-nnoremap <leader>fb <cmd>Telescope find_files cwd=~ prompt_prefix=🔍<cr>
+nnoremap <leader>fb <cmd>Telescope find_files cwd=~ --hidden prompt_prefix=🔍<cr>
 nnoremap <leader>ff <cmd>Telescope live_grep prompt_prefix=🔍<cr>
 nnoremap <leader>fg <cmd>Telescope git_files prompt_prefix=🔍<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags prompt_prefix=🔍<cr>
@@ -100,8 +103,11 @@ let g:vimwiki_markdown_link_ext = 1
 nnoremap <leader>n :NERDTree<CR>
 let NERDTreeShowHidden=1
 
-autocmd VimEnter * NERDTree
+" -- uncomment to open nerdtree when opening vim
+" autocmd VimEnter * NERDTree
+" -- uncomment to open nerdtree, when buffer = Dir
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 "----Autoformat--
 nnoremap <leader>a :Autoformat<CR>
@@ -111,21 +117,19 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 "----COC----
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr><TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr><CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 
 
 " activate ltex
@@ -142,8 +146,6 @@ endif
 
 " let g:coc_snippet_next = '<tab>'
  
-
-
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
@@ -151,6 +153,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Codeaction
 nmap <leader>c  <Plug>(coc-codeaction)
+
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -203,12 +206,10 @@ nmap <leader>rr :CocCommand rust-analyzer.run<CR>
 "filetype plugin indent on    "already enabled
 "
 syntax enable
+
 " viewer method:
 let g:vimtex_view_method = 'zathura'
-
-
-
-
+let g:vimtex_mappings_prefix = '<leader>m'
 
 
 "---- leap require default settings---
@@ -216,4 +217,7 @@ let g:vimtex_view_method = 'zathura'
 "S leap backwards
 "gs leap across windows
 lua require('leap').add_default_mappings()
+
+
+
 
