@@ -12,6 +12,7 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
 ## vim mappings
 * <C-vimkeys>: select window in direction
 * Tab/S-Tab: navigate dropdown
+* J/K: in visualmode Zeile verschieben
 * F5: Open/Close Undotree 
 * F9: invoke makefile
 * leader +
@@ -20,8 +21,8 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
     * tr: open terminal on the right
     * tu: open terminal underneath
     * a: autoformat
-    * ff: fuzzyfind grep current buffer
-    * fg: fuzzyfind all git-tracked files
+    * ff: fuzzyfind all git-tracked files
+    * fg: fuzzyfind grep current buffer
     * fh: fuzzyfind all help_tags
     * m: everything vimtex
     * ml: tex-compile
@@ -35,11 +36,10 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
     * gi: go to implementation
     * rr: rust-run
 
-
 ToDo: 
 * Catch all Runner logic
 * expand dot folders for stows option "--dotfiles"
 * Plugs to consider:
-    * Harpoon
     * subsitute coc for tree-sitter
+    * Harpoon
     * 

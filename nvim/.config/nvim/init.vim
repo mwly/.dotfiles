@@ -1,3 +1,4 @@
+"######################################################### Settings
 syntax on
 set ruler
 set noerrorbells
@@ -11,8 +12,11 @@ set wrap
 " autocmd FileType markdown set nowrap
 autocmd FileType gprof set nowrap
 
-set smartcase
+set nohlsearch
 set incsearch
+set termguicolors
+
+set smartcase
 set backspace=indent,eol,start
 set updatetime=300
 set cmdheight=2
@@ -25,7 +29,12 @@ set signcolumn=yes
 
 highlight LineNr ctermfg=11
 
-"----KEYMAP Vim----
+"----Spell checking--
+setlocal spelllang=de
+autocmd FileType markdown setlocal spell
+
+
+"######################################################### KEYMAP Vim----
 let mapleader = " "
 
 nnoremap <C-h> <C-w>h
@@ -44,12 +53,25 @@ nmap <leader>tu :belowright split<CR><C-j>:terminal<CR>
 "exit Terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-"----Spell checking--
-setlocal spelllang=de
-autocmd FileType markdown setlocal spell
+" move marked line
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+nnoremap Q <nop>
+
+nnoremap <leader>/ :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <leader>x :!chmod +x %<CR>
 
 
 
+"######################################################### Plugins
 "using vim-Plug
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -59,6 +81,10 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'https://github.com/sirtaj/vim-openscad'
+
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+
 
 Plug 'lervag/vimtex'
 " Plug 'honza/vim-snippets'
@@ -70,6 +96,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'ggandor/leap.nvim'
 
+Plug 'eandrju/cellular-automaton.nvim'
+
 "colorschemes
 Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
@@ -77,12 +105,16 @@ Plug 'morhetz/gruvbox'
 call plug#end()            " required
 filetype plugin indent on    " required
 
-
+"######################################################### Plugin-general
 "----enable colorscheme
 "colorscheme dogrun
 colorscheme gruvbox
 command GetJinxed colorscheme dogrun
 command CalmDown colorscheme gruvbox
+
+"screensavers
+nnoremap <leader><ESC> :CellularAutomaton make_it_rain<CR>
+nnoremap <leader><leader><ESC> :CellularAutomaton game_of_life<CR>
 
 "----UndoTree-----
 nnoremap <F5> :UndotreeToggle<CR>
@@ -90,8 +122,8 @@ nnoremap <F5> :UndotreeToggle<CR>
 "----Telescope----
 " Find files using Telescope command-line sugar.
 nnoremap <leader>fb <cmd>Telescope find_files cwd=~ --hidden prompt_prefix=🔍<cr>
-nnoremap <leader>ff <cmd>Telescope live_grep prompt_prefix=🔍<cr>
-nnoremap <leader>fg <cmd>Telescope git_files prompt_prefix=🔍<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep prompt_prefix=🔍<cr>
+nnoremap <leader>ff <cmd>Telescope git_files prompt_prefix=🔍<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags prompt_prefix=🔍<cr>
 
 "----vimwiki----
@@ -108,6 +140,11 @@ let NERDTreeShowHidden=1
 " -- uncomment to open nerdtree, when buffer = Dir
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"---- leap require default settings---
+"s leap forward
+"S leap backwards
+"gs leap across windows
+lua require('leap').add_default_mappings()
 
 "----Autoformat--
 nnoremap <leader>a :Autoformat<CR>
@@ -115,8 +152,44 @@ nnoremap <leader>a :Autoformat<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"----vim-go
+"run in horizontal split
+nmap <leader>gr <Plug>(go-run-split)
+"show godocs in vertival split
+nmap <leader>gd <Plug>(go-doc-vertical)
+"show source definition in vertical split
+"enabled 'g:go_def_reuse_buffer' to overwrite when you issue a recursive call
+let g:go_def_reuse_buffer = 1
+nmap <leader>gs <Plug>(go-def-vertical)
+"show definition of type in vertical split
+nmap <leader>gt <Plug>(go-def-type-vertical)
 
-"----COC----
+"show interfaces implemented by the hovered type
+nmap <leader>gi <Plug>(go-implements)
+"enable some extra highlighting
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_variable_declarations = 1
+
+"--- vimtex
+"
+"filetype plugin indent on    "already enabled
+"
+syntax enable
+
+" viewer method:
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_mappings_prefix = '<leader>m'
+
+
+
+
+
+"######################################################### ----- COC----
 inoremap <silent><expr><TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ CheckBackspace() ? "\<Tab>" :
@@ -148,9 +221,6 @@ endif
  
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
-
-
 " Codeaction
 nmap <leader>c  <Plug>(coc-codeaction)
 
@@ -174,50 +244,9 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 nmap <leader>pr :CocCommand python.execInTerminal<CR>
 
-"----vim-go
-"run in horizontal split
-nmap <leader>gr <Plug>(go-run-split)
-"show godocs in vertival split
-nmap <leader>gd <Plug>(go-doc-vertical)
-"show source definition in vertical split
-"enabled 'g:go_def_reuse_buffer' to overwrite when you issue a recursive call
-let g:go_def_reuse_buffer = 1
-nmap <leader>gs <Plug>(go-def-vertical)
-"show definition of type in vertical split
-nmap <leader>gt <Plug>(go-def-type-vertical)
-
-"show interfaces implemented by the hovered type
-nmap <leader>gi <Plug>(go-implements)
-"enable some extra highlighting
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_variable_declarations = 1
-
 
 "--Rust
 nmap <leader>rr :CocCommand rust-analyzer.run<CR>
-
-"--- vimtex
-"
-"filetype plugin indent on    "already enabled
-"
-syntax enable
-
-" viewer method:
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_mappings_prefix = '<leader>m'
-
-
-"---- leap require default settings---
-"s leap forward
-"S leap backwards
-"gs leap across windows
-lua require('leap').add_default_mappings()
-
 
 
 
