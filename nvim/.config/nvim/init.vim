@@ -79,31 +79,34 @@ nnoremap <leader>x :!chmod +x %<CR>
 set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.config/nvim/plugged')
-Plug 'preservim/nerdtree'
-Plug 'Chiel92/vim-autoformat'
-Plug 'vimwiki/vimwiki'
+"-- essentials
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'https://github.com/sirtaj/vim-openscad'
-
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
 
-
-
-Plug 'lervag/vimtex'
-" Plug 'honza/vim-snippets'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'mbbill/undotree'
-" Plug 'untitled-ai/jupyter_ascending.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+" visibility
 Plug 'ggandor/leap.nvim'
-
-Plug 'eandrju/cellular-automaton.nvim'
+Plug 'preservim/nerdtree'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'mbbill/undotree'
+Plug 'Chiel92/vim-autoformat'
+" Plug 'honza/vim-snippets'
 
 "colorschemes
-Plug 'wadackel/vim-dogrun'
 Plug 'morhetz/gruvbox'
+Plug 'wadackel/vim-dogrun'
+
+
+"languages
+Plug 'lervag/vimtex'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" fun
+Plug 'eandrju/cellular-automaton.nvim'
+
+"-- performance bullshit for extension dev
+Plug 'nvim-lua/plenary.nvim'
 
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -142,6 +145,9 @@ let NERDTreeShowHidden=1
 " autocmd VimEnter * NERDTree
 " -- uncomment to open nerdtree, when buffer = Dir
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" fugitive
+nnoremap <leader>gg :Git<CR>
 
 "---- leap require default settings---
 "s leap forward
