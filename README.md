@@ -39,3 +39,7 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
 ToDo: 
 * Catch all Runner logic
 * expand dot folders for stows option "--dotfiles"
+* Plugs to consider:
+    * Harpoon
+    * subsitute coc for tree-sitter
+    * 
