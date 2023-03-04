@@ -66,7 +66,10 @@ nnoremap <leader>Y "+Y
 
 nnoremap Q <nop>
 
+"find replace all instances of hovered word in buffer
 nnoremap <leader>/ :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" make current file xctbl
 nnoremap <leader>x :!chmod +x %<CR>
 
 

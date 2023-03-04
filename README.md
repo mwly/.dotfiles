@@ -18,6 +18,9 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
 * leader +
     * h/l: select next tab
     * n: open nerdtree
+    * y: yank to clipboard
+    * x: make current file chmod +x
+    * /: find replace all instances of hovered word in buffer
     * tr: open terminal on the right
     * tu: open terminal underneath
     * a: autoformat
@@ -35,6 +38,9 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
     * gt: go to type definition
     * gi: go to implementation
     * rr: rust-run
+
+
+
 
 ToDo: 
 * Catch all Runner logic
