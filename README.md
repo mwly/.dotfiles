@@ -30,6 +30,7 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
     * ww: add file to harpoon
     * we: open harpoon menu
     * 1/2/3/4: harpoon file x
+    * gg: git
     * m: everything vimtex
     * ml: tex-compile
     * mv: texpreview

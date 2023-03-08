@@ -98,6 +98,7 @@ Plug 'preservim/nerdtree'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
 Plug 'Chiel92/vim-autoformat'
+Plug 'nvim-lualine/lualine.nvim'
 " Plug 'honza/vim-snippets'
 
 "colorschemes
@@ -114,6 +115,8 @@ Plug 'eandrju/cellular-automaton.nvim'
 
 "-- performance bullshit for extension dev
 Plug 'nvim-lua/plenary.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -235,7 +238,7 @@ endif
 
 " let g:coc_snippet_next = '<tab>'
  
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Codeaction
 nmap <leader>c  <Plug>(coc-codeaction)
