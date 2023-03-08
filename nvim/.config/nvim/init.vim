@@ -7,7 +7,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nu
-set wrap
+set wrap linebreak
 "---set wrap exclusions
 " autocmd FileType markdown set nowrap
 autocmd FileType gprof set nowrap
@@ -54,6 +54,10 @@ nmap <leader>tr :vsplit<CR><C-l>:terminal<CR>
 nmap <leader>tu :belowright split<CR><C-j>:terminal<CR>
 "exit Terminal mode
 tnoremap <Esc> <C-\><C-n>
+tmap <C-h> <ESC><C-w>h
+tmap <C-j> <ESC><C-w>j
+tmap <C-k> <ESC><C-w>k
+tmap <C-l> <ESC><C-w>l
 
 " move marked line
 vnoremap J :m '>+1<CR>gv=gv
@@ -89,6 +93,7 @@ Plug 'vimwiki/vimwiki'
 
 " visibility
 Plug 'ggandor/leap.nvim'
+Plug 'ThePrimeagen/harpoon'
 Plug 'preservim/nerdtree'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
@@ -194,7 +199,7 @@ syntax enable
 
 " viewer method:
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_mappings_prefix = '<leader>m'
+let g:vimtex_mappings_prefix = '<leader>b'
 
 
 

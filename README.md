@@ -27,6 +27,9 @@ eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
     * ff: fuzzyfind all git-tracked files
     * fg: fuzzyfind grep current buffer
     * fh: fuzzyfind all help_tags
+    * ww: add file to harpoon
+    * we: open harpoon menu
+    * 1/2/3/4: harpoon file x
     * m: everything vimtex
     * ml: tex-compile
     * mv: texpreview
@@ -47,5 +50,4 @@ ToDo:
 * expand dot folders for stows option "--dotfiles"
 * Plugs to consider:
     * subsitute coc for tree-sitter
-    * Harpoon
     * 
