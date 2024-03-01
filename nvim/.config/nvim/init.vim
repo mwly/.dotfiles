@@ -33,6 +33,10 @@ highlight LineNr ctermfg=11
 setlocal spelllang=de
 autocmd FileType markdown setlocal spell
 
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
 
 "######################################################### KEYMAP Vim----
 let mapleader = " "
@@ -99,6 +103,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mbbill/undotree'
 Plug 'Chiel92/vim-autoformat'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'folke/which-key.nvim'
 " Plug 'honza/vim-snippets'
 
 "colorschemes
