@@ -8,6 +8,12 @@ use stow <Dir> to install the path one path above
 eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
 
 
+# nvim install prequisites
+install vim-plug
+install npm for coc
+install tree-sitter
+
+
 
 ## vim mappings
 * <C-vimkeys>: select window in direction

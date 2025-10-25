@@ -90,7 +90,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.config/nvim/plugged')
 "-- essentials
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
@@ -168,13 +168,13 @@ nnoremap <leader>gg :Git<CR>
 "s leap forward
 "S leap backwards
 "gs leap across windows
-lua require('leap').add_default_mappings()
+" lua require('leap').add_default_mappings()
 
 "----Autoformat--
 nnoremap <leader>a :Autoformat<CR>
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "----vim-go
 "run in horizontal split
@@ -214,64 +214,64 @@ let g:vimtex_mappings_prefix = '<leader>b'
 
 
 "######################################################### ----- COC----
-inoremap <silent><expr><TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-
-inoremap <silent><expr><CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
-" activate ltex
-let g:coc_filetype_map = {'tex': 'latex'}
-
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-
-" let g:coc_snippet_next = '<tab>'
- 
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Codeaction
-nmap <leader>c  <Plug>(coc-codeaction)
-
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-"----Coc-Plugin-shortcuts
-"Python
-
-nmap <leader>pr :CocCommand python.execInTerminal<CR>
-
-
-"--Rust
-nmap <leader>rr :CocCommand rust-analyzer.run<CR>
-
+" ## inoremap <silent><expr><TAB>
+" ##       \ coc#pum#visible() ? coc#pum#next(1):
+" ##       \ CheckBackspace() ? "\<Tab>" :
+" ##       \ coc#refresh()
+" ## inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" ## 
+" ## 
+" ## inoremap <silent><expr><CR> coc#pum#visible() ? coc#pum#confirm(): "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" ## 
+" ## function! CheckBackspace() abort
+" ##   let col = col('.') - 1
+" ##   return !col || getline('.')[col - 1]  =~# '\s'
+" ## endfunction
+" ## 
+" ## 
+" ## " activate ltex
+" ## let g:coc_filetype_map = {'tex': 'latex'}
+" ## 
+" ## 
+" ## " Use <c-space> to trigger completion.
+" ## if has('nvim')
+" ##   inoremap <silent><expr> <c-space> coc#refresh()
+" ## else
+" ##   inoremap <silent><expr> <c-@> coc#refresh()
+" ## endif
+" ## 
+" ## 
+" ## " let g:coc_snippet_next = '<tab>'
+" ##  
+" ## "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" ## 
+" ## " Codeaction
+" ## nmap <leader>c  <Plug>(coc-codeaction)
+" ## 
+" ## " Use <C-l> for trigger snippet expand.
+" ## imap <C-l> <Plug>(coc-snippets-expand)
+" ## 
+" ## " Use <C-j> for select text for visual placeholder of snippet.
+" ## vmap <C-j> <Plug>(coc-snippets-select)
+" ## 
+" ## " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+" ## let g:coc_snippet_next = '<c-j>'
+" ## 
+" ## " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+" ## let g:coc_snippet_prev = '<c-k>'
+" ## 
+" ## " Use <C-j> for both expand and jump (make expand higher priority.)
+" ## imap <C-j> <Plug>(coc-snippets-expand-jump)
+" ## 
+" ## "----Coc-Plugin-shortcuts
+" ## "Python
+" ## 
+" ## nmap <leader>pr :CocCommand python.execInTerminal<CR>
+" ## 
+" ## 
+" ## "--Rust
+" ## nmap <leader>rr :CocCommand rust-analyzer.run<CR>
+" ## 
 
 "window resizers
 nnoremap <C-up> <C-w>+
