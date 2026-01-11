@@ -198,16 +198,16 @@ format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 # Git-Branch nur anzeigen, wenn *kein* JJ-Repo
 [custom.git_branch]
 command = "starship module git_branch"
-when = "! jj root > /dev/null 2>&1"
-shell = ["bash", "-c"]
+when = "test ! -d \"$(git rev-parse --show-toplevel 2>/dev/null)/.jj\""
 format = "$output"
+ignore_timeout = true
 
 # Git-Status nur anzeigen, wenn *kein* JJ-Repo
 [custom.git_status]
 command = "starship module git_status"
-when = "! jj root >/dev/null 2>&1"
-shell = ["bash", "-c"]
+when = "test ! -d \"$(git rev-parse --show-toplevel 2>/dev/null)/.jj\""
 format = "$output"
+ignore_timeout = true
 
 ## https://starship.rs/config/#character
 #[character]
