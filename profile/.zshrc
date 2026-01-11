@@ -11,20 +11,13 @@ fi
 
 export EDITOR=/usr/bin/nvim
 
-export CHROME_EXECUTABLE='/usr/bin/chromium'
-
-export ANDROID_SDK_ROOT='/opt/android-sdk'
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
-export PATH=$PATH:$ANDROID_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
-
-
-export JAVA_HOME='/usr/lib/jvm/default'
-export PATH=$JAVA_HOME/bin:$PATH
-
 export PATH=~/go/bin:$PATH
 export PATH=~/.config/scripts:$PATH
+export PATH=~/.local/bin:$PATH
 
-export PATH="/usr/lib/dart/bin:$PATH"
 
+
+
+# LASTLY start starship with zsh
+ 
+eval "$(starship init zsh)" 

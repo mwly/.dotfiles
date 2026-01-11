@@ -8,11 +8,16 @@ use stow <Dir> to install the path one path above
 eg.   ~/dotfiles/nvim/.config/...  ->  ~/.config/...
 
 
+# Shell zsh configured with oh my zsh
+install oh my zsh first
+
+
+
 # nvim install prequisites
 install vim-plug
 install npm for coc
 install tree-sitter
-
+install ripgrep
 
 
 ## vim mappings
@@ -50,6 +55,12 @@ install tree-sitter
     * rr: rust-run
 
 
+
+## GNOME REMAPs not done in this config yet but i am so used to it:
+Super + h: focus on next window to left
+Super + l: focus on next window to right
+Super + j: move to next lower workspace
+Super + k: move to next upper workspace
 
 
 ToDo: 
